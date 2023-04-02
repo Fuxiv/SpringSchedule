@@ -32,14 +32,16 @@ public class BusStopController {
     public List<BusStop813102> getAllStops813102(){
         return busStopService.getAllStops813102();
     }
+
     @GetMapping("/all")
     public Object getAllStops(@RequestParam String line){
-        switch (line) {
+        return switch (line) {
             case "813101" -> getAllStops813101();
             case "813102" -> getAllStops813102();
-        }
-        return null;
+            default -> line;
+        };
     }
 //pierdole nie umiem
+
 
 }

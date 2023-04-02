@@ -4,6 +4,7 @@ import com.autoschedule.autoscheduleonline.Model.BusStop813101;
 import com.autoschedule.autoscheduleonline.Model.BusStop813102;
 import com.autoschedule.autoscheduleonline.Repository.BusStopRepository;
 import com.autoschedule.autoscheduleonline.Repository.BusStopRepository813102;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,10 +15,12 @@ public class BusStopService {
     private final BusStopRepository busStopRepository;
     private final BusStopRepository813102 busStopRepository813102;
 
+
+    @Autowired
     public BusStopService(BusStopRepository busStopRepository, BusStopRepository813102 busStopRepository813102) {
         this.busStopRepository = busStopRepository;
         this.busStopRepository813102 = busStopRepository813102;
-    }
+            }
 
     public List<BusStop813101> getStop(){
         return busStopRepository.findAll();
@@ -31,4 +34,6 @@ public class BusStopService {
     public List<BusStop813102> getAllStops813102(){
         return busStopRepository813102.findAll();
     }
+
+
 }
