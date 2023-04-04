@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "line813trip101")
-public class BusStop813101 {
+public class BusStop813101 extends BusStop{
     @Id
     @Column(name = "id")
     private Integer id;

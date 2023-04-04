@@ -1,7 +1,5 @@
 package com.autoschedule.autoscheduleonline.Model;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
 
 public class BusStop {
     private Integer id;
@@ -12,6 +10,18 @@ public class BusStop {
         this.id = id;
         this.name = name;
         this.time = time;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getTime() {
+        return time;
     }
 
     public BusStop() {
