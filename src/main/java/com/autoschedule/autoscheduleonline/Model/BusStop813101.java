@@ -20,6 +20,10 @@ public class BusStop813101 {
         this.time = time;
     }
 
+    public BusStop813101(String name) {
+        this.name = name;
+    }
+
     public BusStop813101(String name, String time) {
         this.name = name;
         this.time = time;
