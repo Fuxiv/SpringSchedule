@@ -1,9 +1,7 @@
 package com.autoschedule.autoscheduleonline.Service;
 
-import com.autoschedule.autoscheduleonline.Model.BusStop813101;
-import com.autoschedule.autoscheduleonline.Model.BusStop813102;
-import com.autoschedule.autoscheduleonline.Repository.BusStopRepository813101;
-import com.autoschedule.autoscheduleonline.Repository.BusStopRepository813102;
+import com.autoschedule.autoscheduleonline.Model.BusStop;
+import com.autoschedule.autoscheduleonline.Repository.BusStopRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,26 +9,27 @@ import java.util.List;
 
 @Service
 public class BusStopService {
-    private final BusStopRepository813101 busStopRepository813101;
-    private final BusStopRepository813102 busStopRepository813102;
+    private final BusStopRepository busStopRepository;
 
     @Autowired
-    public BusStopService(BusStopRepository813101 busStopRepository813101, BusStopRepository813102 busStopRepository813102) {
-        this.busStopRepository813101 = busStopRepository813101;
-        this.busStopRepository813102 = busStopRepository813102;
+    public BusStopService(BusStopRepository busStopRepository) {
+        this.busStopRepository = busStopRepository;
     }
 
-    public List<BusStop813101> getAllStops813101() {
-        return busStopRepository813101.findAll();
+    public List<BusStop> getAllStops() {
+        return busStopRepository.findAll();
     }
-    public List<BusStop813102> getAllStops813102() {
-        return busStopRepository813102.findAll();
+
+    public String getStopName(short i) {
+        return getAllStops().get(i).getName();
     }
-    private String getStopName813101(short i){
-        return getAllStops813101().get(i).getName();
+
+    public String getStopTime(short i) {
+        return getAllStops().get(i).getTime();
     }
-    private String getStopTime813101(short i){
-        return getAllStops813101().get(i).getTime();
+
+    public List<BusStop> getStopByLineAndTrip(int trip_index_id, int line_number_id) {
+        return busStopRepository.getBusStopByLineAndTrip(trip_index_id, line_number_id);
     }
 
 }
