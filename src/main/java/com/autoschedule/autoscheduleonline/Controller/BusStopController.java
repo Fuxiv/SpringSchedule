@@ -21,6 +21,11 @@ public class BusStopController {
     public List<BusStop> getAllStops813101() {
         return busStopService.getAllStops();
     }
+    public String aaa(){
+        System.out.println(scheduleService.writeFirstLine(101,12));
+        System.out.println(scheduleService.writeLastLine(101,12));
+        return " ";
+    }
 
 
     @GetMapping("/all")
@@ -28,7 +33,9 @@ public class BusStopController {
         return switch (line) {
             case "813101" -> getAllStops813101();
             case "1" -> busStopService.getStopByLineAndTrip(101, 12);
-            case "2" -> scheduleService.writeFirstLine();
+            case "2" -> scheduleService.writeFirstLine(101,12);
+            case "3" -> scheduleService.writeLastLine(101,12);
+            case "4" -> aaa();
             default -> line;
         };
     }
