@@ -23,6 +23,11 @@ public class BusStopController {
     }
     public String aaa(){
         System.out.println(scheduleService.writeFirstLine(101,12));
+        short i=1;
+        while(scheduleService.writeDefaultLine(101,12, i) != null){
+            System.out.println(scheduleService.writeDefaultLine(101,12, i));
+            i++;
+        }
         System.out.println(scheduleService.writeLastLine(101,12));
         return " ";
     }
