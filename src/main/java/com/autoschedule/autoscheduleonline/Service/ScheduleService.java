@@ -105,19 +105,20 @@ public class ScheduleService {
         }
         String stopName = busStop.getName();
         String stopTime = busStop.getTime();
+
         if (stopName.length() > 30) {
             stopName = stopName.substring(0, 30);
         }
-//        int arrivalTimeSeconds = random.ints(-45, 30).findFirst().getAsInt();
-//        int departureTimeSeconds = random.ints(-10, 55).findFirst().getAsInt();
-        int arrivalTimeSeconds = (int) Math.floor(Math.random() * (30 + -45) + -45);
+
+        int arrivalTimeSeconds = random.nextInt(-45, 30);
         int departureTimeSeconds = random.nextInt(-10, 55);
-                //to jest git, po prostu minusy trzeba ogarnac do porzadku
+        if (arrivalTimeSeconds < 0) {
+            arrivalTimeSeconds = -60 + Math.abs(arrivalTimeSeconds);
+        }
 //        System.out.println("arrivalTimeSeconds:" + arrivalTimeSeconds);
 //        System.out.println("departureTimeSeconds:" + departureTimeSeconds);
-        while (Math.abs(departureTimeSeconds) < Math.abs(arrivalTimeSeconds)) {
+        while (Math.abs(departureTimeSeconds) < Math.abs(arrivalTimeSeconds) || departureTimeSeconds < arrivalTimeSeconds) {
             departureTimeSeconds = random.nextInt(arrivalTimeSeconds, 55);
-//            System.out.println(arrivalTimeSeconds + "   " + departureTimeSeconds);
         }
         String arrivalTime = randomSecondsTime1(stopTime, arrivalTimeSeconds);
         String departureTime = randomSecondsTime1(stopTime, departureTimeSeconds);
